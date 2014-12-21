@@ -6,6 +6,7 @@
         favoriteChannelTemplate: _.template($('#favoriteChannelsTemplate').html()),
 
         events: {
+            'click .show-options': 'handleShowOptions',
             'submit #post-form': 'handlePostFormSubmit',
             'click .select-channel': 'handleSelectChannel',
             'focus .input-channel': 'handleChannelFocus'
@@ -54,6 +55,14 @@
 
         hideChannels: function() {
             this.$('.favorite-channels').hide();
+        },
+
+        handleShowOptions: function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            chrome.tabs.create({
+                url: chrome.extension.getURL('options.html')
+            });
         },
 
         handlePostFormSubmit: function(e) {

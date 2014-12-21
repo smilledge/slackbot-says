@@ -30,9 +30,13 @@
 </div>
 
 <script id="favoriteChannelsTemplate" type="text/template">
+  <% if (channels.size() === 0) { %>
+    <li><a href="#" class="show-options">Setup your favorite channels</a></li>
+  <% } else { %>
     <% channels.each(function(channel, i) { %>
         <li><a href="#" class="select-channel" data-channel-name="<%= channel.get('name') %>">#<%= channel.get('name') %></a></li>
     <% }) %>
+  <% } %>
 </script>
 
 <script src="js/vendor/jquery.js"></script>

@@ -17,6 +17,7 @@
     "default_popup": "popup.html"
   },
   "permissions": [
+    "tabs",
     "http://*.slack.com/*",
     "https://*.slack.com/*"
   ]
