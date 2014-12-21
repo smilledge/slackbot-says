@@ -24,7 +24,12 @@
         post: function(data) {
             this.isSubmitting = false;
 
-            // TODO: validate channel, message and the web hook url
+            if (!this.options.get('slackbotUrl')) {
+                chrome.tabs.create({
+                    url: chrome.extension.getURL('options.html')
+                });
+                return;
+            }
 
             $.ajax({
                 url: this.options.get('slackbotUrl') + '&channel=' + encodeURIComponent('#' + data.channel),
