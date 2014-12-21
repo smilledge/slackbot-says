@@ -1,0 +1,48 @@
+#popup {
+  padding: 20px;
+}
+
+#avatar {
+  float: left;
+}
+
+#post-form {
+  margin-left: 75px;
+}
+
+.input-message {
+  width: 360px;
+  height: 120px;
+}
+
+.form-field-channel {
+  float: left;
+  width: 70%;
+  margin-right: 5%;
+}
+
+.form-field-submit {
+  float: left;
+  width: 25%;
+}
+
+.favorite-channels {
+  overflow: hidden;
+  display: none;
+  clear: both;
+  list-style: none;
+  margin: 0 0 0 75px;
+  padding: 5px 0 0 0;
+}
+
+.favorite-channels li {
+  float: left;
+}
+
+.favorite-channels a {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #fcfcfc;
+  font-size: 14px;
+}

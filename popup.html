@@ -1,0 +1,42 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/popup.css">
+<div id="popup">
+  <div id="avatar">
+    <img src="img/slackbot.png" alt="Slackbot">
+  </div>
+
+  <form id="post-form" action="POST" action="#" role="form">
+    <div class="form-field field-message">
+      <label class="form-label">Message</label>
+      <textarea name="message" id="message" class="form-input input-message" placeholder="Slackbot says..."></textarea>
+      <div class="callout"></div>
+    </div>
+
+    <div class="form-field form-field-channel">
+      <label class="form-label">Channel</label>
+      <input type="text" id="channel" name="channel" class="form-input form-input-prepended input-channel" placeholder="channel" />
+      <div class="form-prepend">#</div>
+    </div>
+
+    <div class="form-field form-field-submit">
+      <button type="submit" class="button button-primary">Send</button>
+    </div>
+
+    <div style="clear:both;"></div>
+  </form>
+
+  <ul class="favorite-channels"></ul>
+</div>
+
+<script id="favoriteChannelsTemplate" type="text/template">
+    <% channels.each(function(channel, i) { %>
+        <li><a href="#" class="select-channel" data-channel-name="<%= channel.get('name') %>">#<%= channel.get('name') %></a></li>
+    <% }) %>
+</script>
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/vendor/underscore.js"></script>
+<script src="js/vendor/backbone.js"></script>
+<script src="js/models.js"></script>
+<script src="js/popup.js"></script>

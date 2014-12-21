@@ -1,0 +1,68 @@
+#options-page {
+  position: relative;
+  width: 520px;
+  padding: 20px 30px 160px;
+  margin: 60px auto;
+  border-left: 1px solid #ddd;
+}
+
+#avatar {
+  position: absolute;
+  top: 20px;
+  left: -100px;
+}
+
+#options-form {
+  margin-bottom: 30px;
+}
+
+h1, h2 {
+  margin: 0 0 20px;
+  font-weight: normal;
+  color: #666666;
+}
+
+h2 {
+  margin: 0 0 10px;
+}
+
+.form-field-channel {
+  float: left;
+  width: 70%;
+  margin-right: 5%;
+}
+
+.form-field-submit {
+  float: left;
+  width: 25%;
+}
+
+#channels {
+  clear: both;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#channels li {
+  line-height: 45px;
+  border-bottom: 1px solid #ddd;
+}
+
+#channels li:last-child {
+  border-bottom: none;
+}
+
+#channels .name {
+  font-size: 18px;
+  color: #666;
+}
+
+#channels .remove-channel {
+  float: right;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #af1a11;
+  font-size: 16px;
+  font-weight: bold;
+}

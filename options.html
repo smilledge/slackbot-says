@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title id="title">Slackbot Says Options</title>
+        <link rel="stylesheet" href="css/base.css" media="screen">
+        <link rel="stylesheet" href="css/options.css" media="screen">
+    </head>
+    <body>
+        <div id="options-page">
+            <div id="avatar">
+                <img src="img/slackbot.png" alt="Slackbot">
+            </div>
+
+            <div id="options">
+                <h1>Slackbot Says Options</h1>
+                
+                <h2>Slackbot Url</h2>
+
+                <form action="#" id="options-form" role="form"></form>
+
+                <h2>Favorite Channels</h2>
+
+                <form action="#" id="add-channel-form" role="form">
+                    <div class="form-field form-field-channel">
+                        <label class="form-label">Channel</label>
+                        <input type="text" name="channel" id="channel" class="form-input form-input-prepended input-channel" placeholder="channel" />
+                        <div class="form-prepend">#</div>
+                    </div>
+
+                    <div class="form-field form-field-submit">
+                        <button type="submit" class="button button-primary add-channel">Add</button>
+                    </div>
+                </form>
+
+                <ul id="channels"></ul>
+            </div>
+        </div>
+
+        <script id="optionsFormTemplate" type="text/template">
+            <div class="form-field form-field-slackbot-url">
+                <label class="form-label">Slackbot URL</label>
+                <input type="text" name="slackbotUrl" id="slackbotUrl" class="form-input input-slackbot-url" placeholder="Slackbot URL" value="<%= options.get('slackbotUrl') %>" />
+                <div class="form-hint"><a href=" https://my.slack.com/services/new/slackbot" target="_blank">Setup a Slackbot integration</a> if you do not already have a Slackbot URL.</div>
+            </div>
+        </script>
+
+        <script id="channelsTemplate" type="text/template">
+            <% channels.each(function(channel, i) { %>
+                <li>
+                    <span class="name">#<%= channel.get('name') %></span>
+                    <a href="#" class="remove-channel" data-channel-name="<%= channel.get('name') %>">&times;</a>
+                </li>
+            <% }) %>
+        </script>
+        
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/vendor/underscore.js"></script>
+        <script src="js/vendor/backbone.js"></script>
+        <script src="js/models.js"></script>
+        <script src="js/options.js"></script>
+    </body>
+</html>
