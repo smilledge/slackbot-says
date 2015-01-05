@@ -45,9 +45,16 @@
 
         handleAddChannel: function(e) {
             e.preventDefault();
+            var name = this.$('[name="channel"]').val();
+
+            if (!name || !name.length) {
+                return;
+            }
+
             this.channels.add({
-                name: this.$('[name="channel"]').val()
+                name: name
             });
+
             $('[name="channel"]').val('');
         },
 
