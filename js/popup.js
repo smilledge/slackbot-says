@@ -13,15 +13,17 @@
         },
 
         initialize: function() {
-            _.bindAll(this, 'handleChannelFocus', 'renderChannels', 'handlePostFormSubmit');
+            _.bindAll(this, 'handleChannelFocus', 'renderChannels', 'handlePostFormSubmit', 'saveDefaultChannel');
 
             this.options = new OptionsModel();
             this.channels = this.options.channels;
 
             this.renderChannels();
+            this.setDefaultChannel();
         },
 
         post: function(data) {
+            var self = this;
             this.isSubmitting = false;
 
             if (!this.options.get('slackbotUrl')) {
@@ -37,16 +39,36 @@
                 data: data.message,
                 dataType: 'text'
             })
-            .done(function() {})
+            .done(function() {
+                // Worked, save the channel as the default
+                self.saveDefaultChannel(data.channel);
+            })
             .fail(function(jqXHR, textStatus) {
                 console.log('Unable to post message to slack: ' + textStatus);
             });
+        },
+
+        saveDefaultChannel: function(channel) {
+            if (!channel) {
+                return;
+            }
+            this.options.set('defaultChannel', channel);
+            this.options.save();
         },
 
         renderChannels: function() {
             this.$('.favorite-channels').html(this.favoriteChannelTemplate({
                 channels: this.channels
             }));
+        },
+
+        setDefaultChannel: function() {
+            var defaultChannel = this.options.get('defaultChannel');
+            if (!defaultChannel) {
+                return;
+            }
+
+            this.setChannelName(defaultChannel);
         },
 
         setChannelName: function(channelName) {
