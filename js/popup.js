@@ -9,11 +9,12 @@
             'click .show-options': 'handleShowOptions',
             'submit #post-form': 'handlePostFormSubmit',
             'click .select-channel': 'handleSelectChannel',
-            'focus .input-channel': 'handleChannelFocus'
+            'focus .input-channel': 'handleChannelFocus',
+            'blur .input-channel': 'handleChannelBlur'
         },
 
         initialize: function() {
-            _.bindAll(this, 'handleChannelFocus', 'renderChannels', 'handlePostFormSubmit', 'saveDefaultChannel');
+            _.bindAll(this, 'handleChannelFocus', 'handleChannelBlur', 'renderChannels', 'handlePostFormSubmit', 'saveDefaultChannel');
 
             this.options = new OptionsModel();
             this.channels = this.options.channels;
@@ -114,6 +115,15 @@
 
         handleChannelFocus: function() {
             this.showChannels();
+        },
+
+        handleChannelBlur: function(e) {
+            var self = this;
+            _.defer(function() {
+                if (!$(document.activeElement).hasClass('select-channel')) {
+                    self.hideChannels();
+                }
+            });
         }
     });
 
