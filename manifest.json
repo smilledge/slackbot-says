@@ -1,10 +1,10 @@
 {
   "name": "Slackbot Says",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "manifest_version": 2,
   "description": "",
   "homepage_url": "https://github.com/smilledge/slackbot-says",
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com 'unsafe-eval'; object-src 'self'",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

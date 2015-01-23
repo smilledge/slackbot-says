@@ -13,6 +13,8 @@
         },
 
         initialize: function() {
+            ga('send', 'pageview', '/options.html');
+
             this.options = new OptionsModel();
             this.channels = this.options.channels;
 
@@ -41,6 +43,7 @@
         handleWebhookChange: function(e) {
             e.preventDefault();
             this.options.set('slackbotUrl', this.$('[name="slackbotUrl"]').val(), { validate: true });
+            ga('send', 'event', 'options', 'change', 'slackbot url');
         },
 
         handleAddChannel: function(e) {
@@ -56,12 +59,16 @@
             });
 
             $('[name="channel"]').val('');
+
+            ga('send', 'event', 'options', 'add', 'channel');
         },
 
         handleRemoveChannel: function(e) {
             this.channels.remove(this.channels.filter(function(item) {
                 return item.get('name') === $(e.target).data('channel-name');
             }));
+
+            ga('send', 'event', 'options', 'remove', 'channel');
         },
 
         handleValidationError: function(model, error) {
